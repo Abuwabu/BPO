@@ -1,7 +1,14 @@
 <h2><%= @pagetitle %></h2>
 
 <table>
-	<tr><th>Foto</th><th>Modelo</th><th>Año</th><th>Eslora (m)</th><th>Precio (&euro;)</th><th>En Venta?</th></tr>
+	<tr>
+		<th>Foto</th>
+		<th><%= sortable "bmake", "Modelo" %></th>
+		<th><%= sortable "year", "Año" %></th>
+		<th><%= sortable "length", "Eslora (m)" %></th>
+		<th><%= sortable "price", "Precio (&euro;)" %></th>
+		<th><%= sortable "for_sale", "En Venta?" %></th>
+	</tr>
 
 <% @boats.each do |boat| %>
   <tr>

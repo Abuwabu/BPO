@@ -4,13 +4,16 @@ class BoatsController < ApplicationController
   before_filter :loadmetadata
   before_filter :login_required
   
+  helper_method :sort_column, :sort_direction
+  
   def loadmetadata
     @pagetitle = "Administración de Barcos"
     @inlinestyle = 'h2 { background: #151E2D; }'
   end
   
   def index
-    @boats = Boat.find(:all, :order => 'length')
+    
+    @boats = Boat.find(:all, :order => sort_column + " " + sort_direction)
 
     respond_to do |format|
       format.html # index.html.erb
@@ -89,5 +92,15 @@ class BoatsController < ApplicationController
       format.html { redirect_to(boats_url) }
       format.xml  { head :ok }
     end
+  end
+  
+  private
+  
+  def sort_column
+    Boat.column_names.include?(params[:sort]) ? params[:sort] : "length"
+  end
+  
+  def sort_direction
+    %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
   end
 end
