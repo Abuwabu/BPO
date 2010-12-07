@@ -45,11 +45,11 @@ class Boat < ActiveRecord::Base
     ]
     
     FLAGS = [
-      ["Español", "Español"],
-      ["Inglés", "Inglés"],
-      ["Francés", "Francés"],
-      ["Alemán", "Alemán"],
-      ["Holandés", "Holandés"],
+      ["Española", "Española"],
+      ["Inglesa", "Inglesa"],
+      ["Francesa", "Francesa"],
+      ["Alemana", "Alemana"],
+      ["Holandesa", "Holandesa"],
       ["Belga", "Belga"],
       ["Otra", "Otra"]
     ]
