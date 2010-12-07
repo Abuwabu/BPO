@@ -1,0 +1,1313 @@
+<% form_for(@boat, :html => { :multipart => true }) do |f| %>
+	<%= f.error_messages %>
+	
+	<!-- Basic Information -->
+	<fieldset>
+		<legend accesskey="1">Informaci&oacute;n Basica</legend>
+
+		<fieldset class="thirds">
+			<legend>Tipo</legend>
+			<p>
+				<%= f.label :btype, "Tipo" %>
+				<%= f.select :btype, Boat::BOAT_TYPES, :prompt => "Elegir" %>
+			</p>
+			<p>
+				<%= f.label :hull %>
+				<%= f.select :hull, Boat::HULL_TYPES, :prompt => "Elegir" %>
+			</p>
+			<p>
+				<%= f.label :material %>
+				<%= f.select :material, Boat::HULL_MATERIAL, :prompt => "Elegir" %>
+			</p>
+			<p>
+				<%= f.label :keel %>
+				<%= f.select :keel, Boat::KEEL_TYPES, :prompt => "Elegir" %>
+			</p>
+			<p>
+				<%= f.label :rudder, "Tim&oacute;n" %>
+				<%= f.select :rudder, Boat::RUDDER_TYPES, :prompt => "Elegir" %>
+			</p>
+		</fieldset>
+
+		<fieldset class="thirds">
+			<legend>Modelo</legend>
+			<p>
+				<%= f.label :bmake, "Marca" %>
+				<%= f.text_field :bmake %>
+			</p>
+			<p>
+				<%= f.label :model, "Modelo" %>
+				<%= f.text_field :model %>
+			</p>
+			<p>
+				<%= f.label :architect %>
+				<%= f.text_field :architect %>
+			</p>
+			<p>
+				<%= f.label :builder %>
+				<%= f.text_field :builder %>
+			</p>
+			<p>
+				<%= f.label :year %>
+				<%= f.select :year, Boat::YEARS, :prompt => "Elegir" %>
+			</p>
+			<p>
+				<%= f.label :category %>
+				<%= f.select :category, Boat::NAV_CAT, :prompt => "Elegir" %>
+			</p>
+		</fieldset>
+
+		<fieldset class="thirds">
+			<legend>Medidas</legend>
+			<p>
+				<%= f.label :length %>
+				<%= f.text_field :length %>
+			</p>
+			<p>
+				<%= f.label :beam %>
+				<%= f.text_field :beam %>
+			</p>
+			<p>
+				<%= f.label :draft %>
+				<%= f.text_field :draft %>
+			</p>
+			<p>
+				<%= f.label :headroom %>
+				<%= f.text_field :headroom %>
+			</p>
+			<p>
+				<%= f.label :weight %>
+				<%= f.text_field :weight %>
+			</p>
+		</fieldset>
+		
+		<fieldset class="thirds">
+			<legend>Localizaci&oacute;n</legend>
+			<p>
+				<%= f.label :location, "Se Puede Ver En:" %>
+				<%= f.select :location, Boat::LOCATIONS, :prompt => "Elegir" %>
+			</p>
+			<p>
+				<%= f.label :loc_details,"Detalles Locaci&oacute;n" %>
+				<%= f.text_area :loc_details %>
+			</p>
+		</fieldset>
+		
+		<fieldset class="thirds">
+			<legend>Precio y Registraci&oacute;n</legend>
+			<p>
+				<%= f.label :price, "Precio (&euro;)" %>
+				<%= f.text_field :price %>
+			</p>
+			<p>
+				<%= f.label :tax_paid, "IVA Pagado" %>
+				<%= f.select :tax_paid, Boat::TAX_PAID, :prompt => "Elegir" %>
+			</p>
+			<p>
+				<%= f.label :flag, "Bandera" %>
+				<%= f.select :flag, Boat::FLAGS, :prompt => "Elegir" %>
+			</p>
+			<p>
+				<%= f.label :reg, "Lista" %>
+				<%= f.text_field :reg %>
+			</p>
+			<p>
+				<%= f.label :docs, "Documentaci&oacute;n (cdo navegabilidad) Fecha caducidad hasta:" %>
+				<%= f.text_field :docs %>
+			</p>
+		</fieldset>
+	</fieldset>
+	
+	<!-- Engines -->
+	<fieldset>
+		<legend accesskey="M">Motoras</legend>
+		
+		<fieldset class="thirds">
+			<legend>Modelo</legend>
+			<p>
+				<%= f.label :num_motors, "N&uacute;mero Motoras" %>
+				<%= f.select :num_motors, Boat::NUMBERS, :prompt => "Elegir" %>
+			</p>
+			<p>
+				<%= f.label :eng_make, "Marca" %>
+				<%= f.text_field :eng_make %>
+			</p>
+			<p>
+				<%= f.label :eng_model, "Modelo" %>
+				<%= f.text_field :eng_model %>
+			</p>
+			<p>
+				<%= f.label :eng_type, "Tipo" %>
+				<%= f.select :eng_type, Boat::ENGINE_TYPES, :prompt => "Elegir" %>
+			</p>
+			<p>
+				<%= f.label :eng_cyls, "N&uacute;mero de Cilindros" %>
+				<%= f.select :eng_cyls, Boat::NUMBERS, :prompt => "Elegir" %>
+			</p>
+			<p>
+				<%= f.label :eng_fuel, "Combustible" %>
+				<%= f.select :eng_fuel, Boat::ENGINE_FUEL, :prompt => "Elegir" %>
+			</p>
+		</fieldset>
+		
+		<fieldset class="thirds">
+			<legend>Estad&iacute;sticas</legend>
+			<p>
+				<%= f.label :eng_hp, "Potencia" %>
+				<%= f.text_field :eng_hp %>
+			</p>
+			<p>
+				<%= f.label :eng_cruisespd, "Velocidad Crucero (knts)" %>
+				<%= f.text_field :eng_cruisespd %>
+			</p>
+			<p>
+				<%= f.label :eng_maxspd, "Velocidad Maximo (knts)" %>
+				<%= f.text_field :eng_maxspd %>
+			</p>
+			<p>
+				<%= f.label :fuelcap, "Capacidad de Fuel (l)" %>
+				<%= f.text_field :fuelcap %>
+			</p>
+		</fieldset>
+		
+		<fieldset class="thirds">
+			<legend>Inversor</legend>
+			<p>
+				<%= f.label :trans, "Inversor" %>
+				<%= f.select :trans, Boat::TRANSMISSION, :prompt => "Elegir" %>
+			</p>
+			<p>
+				<%= f.label :props, "H&eacute;lices" %>
+				<%= f.text_field :props %>
+			</p>
+			<p>
+			<label>Flaps</label>
+				<span class="radio">
+					<%= f.label :flaps, 'S&iacute;' %>
+					<%= f.radio_button :flaps, TRUE %>
+					<%= f.label :flaps, 'No' %>
+					<%= f.radio_button :flaps, FALSE %>
+				</span>
+			</p>
+			<p>
+			<label>Trim</label>
+				<span class="radio">
+					<%= f.label :trim, 'S&iacute;' %>
+					<%= f.radio_button :trim, TRUE %>
+					<%= f.label :trim, 'No' %>
+					<%= f.radio_button :trim, FALSE %>
+				</span>
+			</p>
+			<p>
+			<label>H&eacute;lice de Proa</label>
+				<span class="radio">
+					<%= f.label :bowthrust, 'S&iacute;' %>
+					<%= f.radio_button :bowthrust, TRUE %>
+					<%= f.label :bowthrust, 'No' %>
+					<%= f.radio_button :bowthrust, FALSE %>
+				</span>
+			</p>
+			<p>
+			<label>H&eacute;lice de Popa</label>
+				<span class="radio">
+					<%= f.label :sternthrust, 'S&iacute;' %>
+					<%= f.radio_button :sternthrust, TRUE %>
+					<%= f.label :sternthrust, 'No' %>
+					<%= f.radio_button :sternthrust, FALSE %>
+				</span>
+			</p>
+		</fieldset>
+		
+		<fieldset class="thirds">
+			<legend>Anotaciones</legend>
+			<p>
+			<label>Mantenamiento</label>
+				<span class="radio">
+					<%= f.label :eng_serviced, 'S&iacute;' %>
+					<%= f.radio_button :eng_serviced, TRUE %>
+					<%= f.label :eng_serviced, 'No' %>
+					<%= f.radio_button :eng_serviced, FALSE %>
+				</span>
+			</p>
+			<p>
+				<%= f.label :eng_hours, "Horas" %>
+				<%= f.text_field :eng_hours %>
+			</p>
+			<p>
+				<%= f.label :eng_0tes, "Otra" %>
+				<%= f.text_area :eng_notes %>
+			</p>
+		</fieldset>
+	</fieldset>
+		
+	<!-- Rigging & Sails -->
+	<fieldset>
+		<legend>Jarcia y Velas</legend>
+		
+		<fieldset class="halves">
+			<legend>Jarcia y Velas</legend>
+			<p>
+				<%= f.label :masts, "N&uacute;mero Mastiles" %>
+				<%= f.select :masts, Boat::NUMBERS, :prompt => "Elegir" %>
+			</p>
+			<p>
+			<label>Babystay</label>
+				<span class="radio">
+					<%= f.label :babystay, 'S&iacute;' %>
+					<%= f.radio_button :babystay, TRUE %>
+					<%= f.label :babystay, 'No' %>
+					<%= f.radio_button :babystay, FALSE %>
+				</span>
+			</p>
+			<p>
+				<%= f.label :numsails, "N&uacute;mero Velas" %>
+				<%= f.select :numsails, Boat::NUMBERS, :prompt => "Elegir" %>
+			</p>
+			<p>
+				<%= f.label :sailarea, "Superficie V&eacute;lica (m2)" %>
+				<%= f.text_field :sailarea %>
+			</p>
+			<p>
+			<label>Mayor Enrollable</label>
+				<span class="radio">
+					<%= f.label :main_roller, 'S&iacute;' %>
+					<%= f.radio_button :main_roller, TRUE %>
+					<%= f.label :main_roller, 'No' %>
+					<%= f.radio_button :main_roller, FALSE %>
+				</span>
+			</p>
+			<p>
+			<label>G&eacute;nova Enrollable</label>
+				<span class="radio">
+					<%= f.label :gen_roller, 'S&iacute;' %>
+					<%= f.radio_button :gen_roller, TRUE %>
+					<%= f.label :gen_roller, 'No' %>
+					<%= f.radio_button :gen_roller, FALSE %>
+				</span>
+			</p>
+			<p>
+			<label>Torment&iacute;n</label>
+				<span class="radio">
+					<%= f.label :storm_jib, 'S&iacute;' %>
+					<%= f.radio_button :storm_jib, TRUE %>
+					<%= f.label :storm_jib, 'No' %>
+					<%= f.radio_button :storm_jib, FALSE %>
+				</span>
+			</p>
+			<p>
+			<label>Spinnaker</label>
+				<span class="radio">
+					<%= f.label :spinnaker, 'S&iacute;' %>
+					<%= f.radio_button :spinnaker, TRUE %>
+					<%= f.label :spinnaker, 'No' %>
+					<%= f.radio_button :spinnaker, FALSE %>
+				</span>
+			</p>
+			<p>
+			<label>Tang&oacute;n</label>
+				<span class="radio">
+					<%= f.label :pole, 'S&iacute;' %>
+					<%= f.radio_button :pole, TRUE %>
+					<%= f.label :pole, 'No' %>
+					<%= f.radio_button :pole, FALSE %>
+				</span>
+			</p>
+			<p>
+			<label>Lazybag</label>
+				<span class="radio">
+					<%= f.label :lazybag, 'S&iacute;' %>
+					<%= f.radio_button :lazybag, TRUE %>
+					<%= f.label :lazybag, 'No' %>
+					<%= f.radio_button :lazybag, FALSE %>
+				</span>
+			</p>
+			<p>
+			<label>Lazyjack</label>
+				<span class="radio">
+					<%= f.label :lazyjacks, 'S&iacute;' %>
+					<%= f.radio_button :lazyjacks, TRUE %>
+					<%= f.label :lazyjacks, 'No' %>
+					<%= f.radio_button :lazyjacks, FALSE %>
+				</span>
+			</p>
+		</fieldset>
+		
+		<fieldset class="halves">
+			<legend>Anotaciones</legend>
+			<p>
+				<%= f.label :sailnotes, "Detalles" %>
+				<%= f.text_area :sailnotes %>
+			</p>
+		</fieldset>
+	</fieldset>
+	
+	<!-- Layout -->
+	<fieldset>
+		<legend accesskey="D">Distribuci&oacute;n</legend>
+		
+		<fieldset class="halves">
+			<legend>Distribuci&oacute;n</legend>
+			<p>
+				<%= f.label :cabins, "N&uacute;mero Camarotes" %>
+				<%= f.select :cabins, Boat::NUMBERS, :prompt => "Elegir" %>
+			</p>
+			<p>
+				<%= f.label :heads, "N&uacute;mero Baños" %>
+				<%= f.select :heads, Boat::NUMBERS, :prompt => "Elegir" %>
+			</p>
+			<p>
+				<%= f.label :capacity, "Capacidad" %>
+				<%= f.select :capacity, Boat::NUMBERS, :prompt => "Elegir" %>
+			</p>
+			<p>
+				<%= f.label :doubles, "Matrimonios" %>
+				<%= f.select :doubles, Boat::NUMBERS, :prompt => "Elegir" %>
+			</p>
+			<p>
+				<%= f.label :singles, "Individuales" %>
+				<%= f.select :singles, Boat::NUMBERS, :prompt => "Elegir" %>
+			</p>
+			<p>
+				<%= f.label :bunks, "Literas" %>
+				<%= f.select :bunks, Boat::NUMBERS, :prompt => "Elegir" %>
+			</p>
+			<p>
+			<label>Sal&oacute;n Convertible</label>
+				<span class="radio">
+					<%= f.label :convert, 'S&iacute;' %>
+					<%= f.radio_button :convert, TRUE %>
+					<%= f.label :convert, 'No' %>
+					<%= f.radio_button :convert, FALSE %>
+				</span>
+			</p>
+			<p>
+			<label>Rueda del Tim&oacute;n Interior</label>
+				<span class="radio">
+					<%= f.label :intwheel, 'S&iacute;' %>
+					<%= f.radio_button :intwheel, TRUE %>
+					<%= f.label :intwheel, 'No' %>
+					<%= f.radio_button :intwheel, FALSE %>
+				</span>
+			</p>
+			<p>
+			<label>Flybridge</label>
+				<span class="radio">
+					<%= f.label :flybridge, 'S&iacute;' %>
+					<%= f.radio_button :flybridge, TRUE %>
+					<%= f.label :flybridge, 'No' %>
+					<%= f.radio_button :flybridge, FALSE %>
+				</span>
+			</p>
+		</fieldset>
+		
+		<fieldset class="halves">
+			<legend>Anotaciones</legend>
+			<p>
+				<%= f.label :layout_notes, "Detalles" %>
+				<%= f.text_area :layout_notes %>
+			</p>
+		</fieldset>
+	</fieldset>	
+	
+	<!-- Equipment -->
+	<fieldset>
+		<legend accesskey="E">Equipo</legend>
+		
+		<fieldset class="thirds">
+			<legend>Seguridad</legend>
+			<p>
+			<label>Balsa Salvavidas</label>
+				<span class="radio">
+					<%= f.label :raft, 'S&iacute;' %>
+					<%= f.radio_button :raft, TRUE %>
+					<%= f.label :raft, 'No' %>
+					<%= f.radio_button :raft, FALSE %>
+				</span>
+			</p>
+			<p>
+				<%= f.label :raft_cert, "Certificado hasta:" %>
+				<%= f.text_field :raft_cert %>
+			</p>
+			<p>
+			<label>Bengalas</label>
+				<span class="radio">
+					<%= f.label :flares, 'S&iacute;' %>
+					<%= f.radio_button :flares, TRUE %>
+					<%= f.label :flares, 'No' %>
+					<%= f.radio_button :flares, FALSE %>
+				</span>
+			</p>
+			<p>
+				<%= f.label :flares_cert, "Certificado hasta:" %>
+				<%= f.text_field :flares_cert %>
+			</p>
+			<p>
+			<label>Radio Baliza</label>
+				<span class="radio">
+					<%= f.label :epirb, 'S&iacute;' %>
+					<%= f.radio_button :epirb, TRUE %>
+					<%= f.label :epirb, 'No' %>
+					<%= f.radio_button :epirb, FALSE %>
+				</span>
+			</p>
+			<p>
+			<label>Chalecos</label>
+				<span class="radio">
+					<%= f.label :jackets, 'S&iacute;' %>
+					<%= f.radio_button :jackets, TRUE %>
+					<%= f.label :jackets, 'No' %>
+					<%= f.radio_button :jackets, FALSE %>
+				</span>
+			</p>
+			<p>
+			<label>Extinctor</label>
+				<span class="radio">
+					<%= f.label :fire_ext, 'S&iacute;' %>
+					<%= f.radio_button :fire_ext, TRUE %>
+					<%= f.label :fire_ext, 'No' %>
+					<%= f.radio_button :fire_ext, FALSE %>
+				</span>
+			</p>
+		</fieldset>
+		
+		<fieldset class="thirds">
+			<legend>Electricidad</legend>
+			<p>
+			<label>Generador</label>
+				<span class="radio">
+					<%= f.label :gen, 'S&iacute;' %>
+					<%= f.radio_button :gen, TRUE %>
+					<%= f.label :gen, 'No' %>
+					<%= f.radio_button :gen, FALSE %>
+				</span>
+			</p>
+			<p>
+				<%= f.label :numbats, "N&uacute;mero Baterias" %>
+				<%= f.select :numbats, Boat::NUMBERS, :prompt => "Elegir" %>
+			</p>
+			<p>
+			<label>Tomas Tierra</label>
+				<span class="radio">
+					<%= f.label :shorepow, 'S&iacute;' %>
+					<%= f.radio_button :shorepow, TRUE %>
+					<%= f.label :shorepow, 'No' %>
+					<%= f.radio_button :shorepow, FALSE %>
+				</span>
+			</p>
+			<p>
+				<%= f.label :numcharg, "N&uacute;mero Cargadores" %>
+				<%= f.select :numcharg, Boat::NUMBERS, :prompt => "Elegir" %>
+			</p>
+			<p>
+			<label>12/220V Invertor</label>
+				<span class="radio">
+					<%= f.label :invert, 'S&iacute;' %>
+					<%= f.radio_button :invert, TRUE %>
+					<%= f.label :invert, 'No' %>
+					<%= f.radio_button :invert, FALSE %>
+				</span>
+			</p>
+			<p>
+			<label>Paneles Solares</label>
+				<span class="radio">
+					<%= f.label :solar, 'S&iacute;' %>
+					<%= f.radio_button :solar, TRUE %>
+					<%= f.label :solar, 'No' %>
+					<%= f.radio_button :solar, FALSE %>
+				</span>
+			</p>
+			<p>
+			<label>Cargador de Viento</label>
+				<span class="radio">
+					<%= f.label :windchrg, 'S&iacute;' %>
+					<%= f.radio_button :windchrg, TRUE %>
+					<%= f.label :windchrg, 'No' %>
+					<%= f.radio_button :windchrg, FALSE %>
+				</span>
+			</p>
+			<p>
+				<%= f.label :elec_notes, "Detalles Electricidad" %>
+				<%= f.text_area :elec_notes %>
+			</p>
+		</fieldset>
+		
+		<fieldset class="thirds">
+			<legend>Fondeo</legend>
+			<p>
+				<%= f.label :numancs, "N&uacute;mero Anclas" %>
+				<%= f.select :numancs, Boat::NUMBERS, :prompt => "Elegir" %>
+			</p>
+			<p>
+				<%= f.label :anc_notes, "Tipos y Pesos de Anclas" %>
+				<%= f.text_area :anc_notes %>
+			</p>
+			<p>
+				<%= f.label :chain, "Cadena (m)" %>
+				<%= f.text_field :chain %>
+			</p>
+			<p>
+			<label>Molinete Electrico</label>
+				<span class="radio">
+					<%= f.label :ewindlass, 'S&iacute;' %>
+					<%= f.radio_button :ewindlass, TRUE %>
+					<%= f.label :ewindlass, 'No' %>
+					<%= f.radio_button :ewindlass, FALSE %>
+				</span>
+			</p>
+			<p>
+			<label>Molinete Manual</label>
+				<span class="radio">
+					<%= f.label :mwindlass, 'S&iacute;' %>
+					<%= f.radio_button :mwindlass, TRUE %>
+					<%= f.label :mwindlass, 'No' %>
+					<%= f.radio_button :mwindlass, FALSE %>
+				</span>
+			</p>
+			<p>
+				<%= f.label :windlass_notes, "Detalles Molinetes" %>
+				<%= f.text_area :windlass_notes %>
+			</p>
+		</fieldset>
+		
+		<fieldset class="thirds">
+			<legend>Auxiliar</legend>
+			<p>
+			<label>Auxiliar</label>
+				<span class="radio">
+					<%= f.label :dinghy, 'S&iacute;' %>
+					<%= f.radio_button :dinghy, TRUE %>
+					<%= f.label :dinghy, 'No' %>
+					<%= f.radio_button :dinghy, FALSE %>
+				</span>
+			</p>
+			<p>
+			<label>Semi-Rigida</label>
+				<span class="radio">
+					<%= f.label :semi_rig, 'S&iacute;' %>
+					<%= f.radio_button :semi_rig, TRUE %>
+					<%= f.label :semi_rig, 'No' %>
+					<%= f.radio_button :semi_rig, FALSE %>
+				</span>
+			</p>
+			<p>
+			<label>Fueraborda</label>
+				<span class="radio">
+					<%= f.label :outboard, 'S&iacute;' %>
+					<%= f.radio_button :outboard, TRUE %>
+					<%= f.label :outboard, 'No' %>
+					<%= f.radio_button :outboard, FALSE %>
+				</span>
+			</p>
+			<p>
+			<label>4-Tiempos</label>
+				<span class="radio">
+					<%= f.label :fourstroke, 'S&iacute;' %>
+					<%= f.radio_button :fourstroke, TRUE %>
+					<%= f.label :fourstroke, 'No' %>
+					<%= f.radio_button :fourstroke, FALSE %>
+				</span>
+			</p>
+			<p>
+				<%= f.label :dinghy_notes, "Detalles" %>
+				<%= f.text_area :dinghy_notes %>
+			</p>
+		</fieldset>
+		
+		<fieldset class="thirds">
+			<legend>Equipo de Cubierta</legend>
+			<p>
+			<label>Pasarela B&aacute;sica</label>
+				<span class="radio">
+					<%= f.label :passarelle, 'S&iacute;' %>
+					<%= f.radio_button :passarelle, TRUE %>
+					<%= f.label :passarelle, 'No' %>
+					<%= f.radio_button :passarelle, FALSE %>
+				</span>
+			</p>
+			<p>
+			<label>Pasarela Hidr&aacute;ulica</label>
+				<span class="radio">
+					<%= f.label :pass_hyd, 'S&iacute;' %>
+					<%= f.radio_button :pass_hyd, TRUE %>
+					<%= f.label :pass_hyd, 'No' %>
+					<%= f.radio_button :pass_hyd, FALSE %>
+				</span>
+			</p>
+			<p>
+			<label>Pescantes</label>
+				<span class="radio">
+					<%= f.label :davits, 'S&iacute;' %>
+					<%= f.radio_button :davits, TRUE %>
+					<%= f.label :davits, 'No' %>
+					<%= f.radio_button :davits, FALSE %>
+				</span>
+			</p>
+			<p>
+			<label>Plataforma de Ba&ntilde;o</label>
+				<span class="radio">
+					<%= f.label :bathe_plat, 'S&iacute;' %>
+					<%= f.radio_button :bathe_plat, TRUE %>
+					<%= f.label :bathe_plat, 'No' %>
+					<%= f.radio_button :bathe_plat, FALSE %>
+				</span>
+			</p>
+			<p>
+			<label>Escalera de Ba&ntilde;o</label>
+				<span class="radio">
+					<%= f.label :swim_ladd, 'S&iacute;' %>
+					<%= f.radio_button :swim_ladd, TRUE %>
+					<%= f.label :swim_ladd, 'No' %>
+					<%= f.radio_button :swim_ladd, FALSE %>
+				</span>
+			</p>
+		</fieldset>
+		
+		<fieldset class="thirds">
+			<legend>Sistema de Agua</legend>
+			<p>
+				<%= f.label :toilet, "Tipo de Water" %>
+				<%= f.select :toilet, Boat::TOILETS, :prompt => "Elegir" %>
+			</p>
+			<p>
+			<label>Deposito de Aguas Negras</label>
+				<span class="radio">
+					<%= f.label :black_tank, 'S&iacute;' %>
+					<%= f.radio_button :black_tank, TRUE %>
+					<%= f.label :black_tank, 'No' %>
+					<%= f.radio_button :black_tank, FALSE %>
+				</span>
+			</p>
+			<p>
+				<%= f.label :black_cap, "Capacidad del Deposito (l)" %>
+				<%= f.text_field :black_cap %>
+			</p>
+			<p>
+			<label>Deposito de Aguas Grises</label>
+				<span class="radio">
+					<%= f.label :grey_tank, 'S&iacute;' %>
+					<%= f.radio_button :grey_tank, TRUE %>
+					<%= f.label :grey_tank, 'No' %>
+					<%= f.radio_button :grey_tank, FALSE %>
+				</span>
+			</p>
+			<p>
+				<%= f.label :grey_cap, "Capacidad del Deposito (l)" %>
+				<%= f.text_field :grey_cap %>
+			</p>
+			<p>
+			<label>Potabilizadora</label>
+				<span class="radio">
+					<%= f.label :purifier, 'S&iacute;' %>
+					<%= f.radio_button :purifier, TRUE %>
+					<%= f.label :purifier, 'No' %>
+					<%= f.radio_button :purifier, FALSE %>
+				</span>
+			</p>
+			<p>
+			<label>Calentador de Agua</label>
+				<span class="radio">
+					<%= f.label :water_heater, 'S&iacute;' %>
+					<%= f.radio_button :water_heater, TRUE %>
+					<%= f.label :water_heater, 'No' %>
+					<%= f.radio_button :water_heater, FALSE %>
+				</span>
+			</p>
+		</fieldset>
+	</fieldset>
+	
+	<!-- Navigation -->
+	<fieldset>
+		<legend accesskey="N">Navegaci&oacute;n</legend>
+		
+		<fieldset class="thirds">
+			<legend>Equipo Basico</legend>
+			<p>
+			<label>Piloto Autom&aacute;tico</label>
+				<span class="radio">
+					<%= f.label :autopilot, 'S&iacute;' %>
+					<%= f.radio_button :autopilot, TRUE %>
+					<%= f.label :autopilot, 'No' %>
+					<%= f.radio_button :autopilot, FALSE %>
+				</span>
+			</p>
+			<p>
+			<label>Corredera</label>
+				<span class="radio">
+					<%= f.label :log, 'S&iacute;' %>
+					<%= f.radio_button :log, TRUE %>
+					<%= f.label :log, 'No' %>
+					<%= f.radio_button :log, FALSE %>
+				</span>
+			</p>
+			<p>
+			<label>Sonda</label>
+				<span class="radio">
+					<%= f.label :sounder, 'S&iacute;' %>
+					<%= f.radio_button :sounder, TRUE %>
+					<%= f.label :sounder, 'No' %>
+					<%= f.radio_button :sounder, FALSE %>
+				</span>
+			</p>
+			<p>
+			<label>GPS</label>
+				<span class="radio">
+					<%= f.label :gps, 'S&iacute;' %>
+					<%= f.radio_button :gps, TRUE %>
+					<%= f.label :gps, 'No' %>
+					<%= f.radio_button :gps, FALSE %>
+				</span>
+			</p>
+			<p>
+			<label>VHF</label>
+				<span class="radio">
+					<%= f.label :vhf, 'S&iacute;' %>
+					<%= f.radio_button :vhf, TRUE %>
+					<%= f.label :vhf, 'No' %>
+					<%= f.radio_button :vhf, FALSE %>
+				</span>
+			</p>
+			<p>
+			<label>DSC</label>
+				<span class="radio">
+					<%= f.label :dsc, 'S&iacute;' %>
+					<%= f.radio_button :dsc, TRUE %>
+					<%= f.label :dsc, 'No' %>
+					<%= f.radio_button :dsc, FALSE %>
+				</span>
+			</p>
+			<p>
+			<label>Anemometro</label>
+				<span class="radio">
+					<%= f.label :anem, 'S&iacute;' %>
+					<%= f.radio_button :anem, TRUE %>
+					<%= f.label :anem, 'No' %>
+					<%= f.radio_button :anem, FALSE %>
+				</span>
+			</p>
+		</fieldset>
+		
+		<fieldset class="thirds">
+			<legend>Equipo Avanzado</legend>
+			<p>
+			<label>Radar</label>
+				<span class="radio">
+					<%= f.label :radar, 'S&iacute;' %>
+					<%= f.radio_button :radar, TRUE %>
+					<%= f.label :radar, 'No' %>
+					<%= f.radio_button :radar, FALSE %>
+				</span>
+			</p>
+			<p>
+			<label>Plotter</label>
+				<span class="radio">
+					<%= f.label :plotter, 'S&iacute;' %>
+					<%= f.radio_button :plotter, TRUE %>
+					<%= f.label :plotter, 'No' %>
+					<%= f.radio_button :plotter, FALSE %>
+				</span>
+			</p>
+			<p>
+			<label>Piloto de Viento</label>
+				<span class="radio">
+					<%= f.label :vane, 'S&iacute;' %>
+					<%= f.radio_button :vane, TRUE %>
+					<%= f.label :vane, 'No' %>
+					<%= f.radio_button :vane, FALSE %>
+				</span>
+			</p>
+			<p>
+			<label>Navtex</label>
+				<span class="radio">
+					<%= f.label :navtex, 'S&iacute;' %>
+					<%= f.radio_button :navtex, TRUE %>
+					<%= f.label :navtex, 'No' %>
+					<%= f.radio_button :navtex, FALSE %>
+				</span>
+			</p>
+			<p>
+			<label>BLU</label>
+				<span class="radio">
+					<%= f.label :blu, 'S&iacute;' %>
+					<%= f.radio_button :blu, TRUE %>
+					<%= f.label :blu, 'No' %>
+					<%= f.radio_button :blu, FALSE %>
+				</span>
+			</p>
+			<p>
+			<label>AIS</label>
+				<span class="radio">
+					<%= f.label :ais, 'S&iacute;' %>
+					<%= f.radio_button :ais, TRUE %>
+					<%= f.label :ais, 'No' %>
+					<%= f.radio_button :ais, FALSE %>
+				</span>
+			</p>
+		</fieldset>
+		
+		<fieldset class="thirds">
+			<legend>Annotaciones</legend>
+			<p>
+				<%= f.label :nav_notes, "Modelos y Detalles" %>
+				<%= f.text_area :nav_notes %>
+			</p>
+		</fieldset>
+	</fieldset>
+	
+	<!-- Household Appliances -->
+	<fieldset>
+		<legend accesskey="D">Confort</legend>
+		
+		<fieldset class="thirds">
+			<legend>Electrodom&eacute;sticos</legend>
+			<p>
+				<%= f.label :fridges, "Neveras" %>
+				<%= f.select :fridges, Boat::NUMBERS, :prompt => "Elegir" %>
+			</p>
+			<p>
+			<label>Congelador</label>
+				<span class="radio">
+					<%= f.label :freezer, 'S&iacute;' %>
+					<%= f.radio_button :freezer, TRUE %>
+					<%= f.label :freezer, 'No' %>
+					<%= f.radio_button :freezer, FALSE %>
+				</span>
+			</p>
+			<p>
+			<label>Cubitera</label>
+				<span class="radio">
+					<%= f.label :icemaker, 'S&iacute;' %>
+					<%= f.radio_button :icemaker, TRUE %>
+					<%= f.label :icemaker, 'No' %>
+					<%= f.radio_button :icemaker, FALSE %>
+				</span>
+			</p>
+			<p>
+			<label>Horno</label>
+				<span class="radio">
+					<%= f.label :oven, 'S&iacute;' %>
+					<%= f.radio_button :oven, TRUE %>
+					<%= f.label :oven, 'No' %>
+					<%= f.radio_button :oven, FALSE %>
+				</span>
+			</p>
+			<p>
+			<label>Microondas</label>
+				<span class="radio">
+					<%= f.label :microwave, 'S&iacute;' %>
+					<%= f.radio_button :microwave, TRUE %>
+					<%= f.label :microwave, 'No' %>
+					<%= f.radio_button :microwave, FALSE %>
+				</span>
+			</p>
+			<p>
+				<%= f.label :hobs, "Fuegos" %>
+				<%= f.select :hobs, Boat::NUMBERS, :prompt => "Elegir" %>
+			</p>
+			<p>
+				<%= f.label :domes_fuel, "Tipo de Combustible" %>
+				<%= f.select :domes_fuel, Boat::COOKING_FUELS, :prompt => "Elegir" %>
+			</p>
+			<p>
+			<label>Lavadora</label>
+				<span class="radio">
+					<%= f.label :washer, 'S&iacute;' %>
+					<%= f.radio_button :washer, TRUE %>
+					<%= f.label :washer, 'No' %>
+					<%= f.radio_button :washer, FALSE %>
+				</span>
+			</p>
+			<p>
+			<label>Secadora</label>
+				<span class="radio">
+					<%= f.label :dryer, 'S&iacute;' %>
+					<%= f.radio_button :dryer, TRUE %>
+					<%= f.label :dryer, 'No' %>
+					<%= f.radio_button :dryer, FALSE %>
+				</span>
+			</p>
+			<p>
+			<label>Lavavajillas</label>
+				<span class="radio">
+					<%= f.label :dishwash, 'S&iacute;' %>
+					<%= f.radio_button :dishwash, TRUE %>
+					<%= f.label :dishwash, 'No' %>
+					<%= f.radio_button :dishwash, FALSE %>
+				</span>
+			</p>
+		</fieldset>
+		
+		<fieldset class="thirds">
+			<legend>Control de Clima</legend>
+			<p>
+			<label>Aire Acondicionado</label>
+				<span class="radio">
+					<%= f.label :aircon, 'S&iacute;' %>
+					<%= f.radio_button :aircon, TRUE %>
+					<%= f.label :aircon, 'No' %>
+					<%= f.radio_button :aircon, FALSE %>
+				</span>
+			</p>
+			<p>
+			<label>Calefacci&oacute;n</label>
+				<span class="radio">
+					<%= f.label :heating, 'S&iacute;' %>
+					<%= f.radio_button :heating, TRUE %>
+					<%= f.label :heating, 'No' %>
+					<%= f.radio_button :heating, FALSE %>
+				</span>
+			</p>
+		</fieldset>
+		
+		<fieldset class="thirds">
+			<legend>D.V.D, T.V. y Radio</legend>
+			<p>
+			<label>DVD</label>
+				<span class="radio">
+					<%= f.label :dvd, 'S&iacute;' %>
+					<%= f.radio_button :dvd, TRUE %>
+					<%= f.label :dvd, 'No' %>
+					<%= f.radio_button :dvd, FALSE %>
+				</span>
+			</p>
+			<p>
+			<label>Antena TDT</label>
+				<span class="radio">
+					<%= f.label :tdt, 'S&iacute;' %>
+					<%= f.radio_button :tdt, TRUE %>
+					<%= f.label :tdt, 'No' %>
+					<%= f.radio_button :tdt, FALSE %>
+				</span>
+			</p>
+			<p>
+			<label>Antena Satelite</label>
+				<span class="radio">
+					<%= f.label :sat, 'S&iacute;' %>
+					<%= f.radio_button :sat, TRUE %>
+					<%= f.label :sat, 'No' %>
+					<%= f.radio_button :sat, FALSE %>
+				</span>
+			</p>
+			<p>
+			<label>TV</label>
+				<span class="radio">
+					<%= f.label :tv, 'S&iacute;' %>
+					<%= f.radio_button :tv, TRUE %>
+					<%= f.label :tv, 'No' %>
+					<%= f.radio_button :tv, FALSE %>
+				</span>
+			</p>
+			<p>
+			<label>Radio Cassette</label>
+				<span class="radio">
+					<%= f.label :cassette, 'S&iacute;' %>
+					<%= f.radio_button :cassette, TRUE %>
+					<%= f.label :cassette, 'No' %>
+					<%= f.radio_button :cassette, FALSE %>
+				</span>
+			</p>
+			<p>
+			<label>Radio CD</label>
+				<span class="radio">
+					<%= f.label :cd, 'S&iacute;' %>
+					<%= f.radio_button :cd, TRUE %>
+					<%= f.label :cd, 'No' %>
+					<%= f.radio_button :cd, FALSE %>
+				</span>
+			</p>
+			<p>
+			<label>Altavoces Interior</label>
+				<span class="radio">
+					<%= f.label :int_speakers, 'S&iacute;' %>
+					<%= f.radio_button :int_speakers, TRUE %>
+					<%= f.label :int_speakers, 'No' %>
+					<%= f.radio_button :int_speakers, FALSE %>
+				</span>
+			</p>
+			<p>
+			<label>Altavoces Exterior</label>
+				<span class="radio">
+					<%= f.label :ext_speakers, 'S&iacute;' %>
+					<%= f.radio_button :ext_speakers, TRUE %>
+					<%= f.label :ext_speakers, 'No' %>
+					<%= f.radio_button :ext_speakers, FALSE %>
+				</span>
+			</p>
+		</fieldset>
+		
+		<fieldset class="thirds">
+			<legend>Colchonetas, Toldos, y Lonas</legend>
+			<p>
+			<label>Colchonetas de Ba&ntilde;era</label>
+				<span class="radio">
+					<%= f.label :cushions, 'S&iacute;' %>
+					<%= f.radio_button :cushions, TRUE %>
+					<%= f.label :cushions, 'No' %>
+					<%= f.radio_button :cushions, FALSE %>
+				</span>
+			</p>
+			<p>
+			<label>Colchonetas de Solarium</label>
+				<span class="radio">
+					<%= f.label :sun_cush, 'S&iacute;' %>
+					<%= f.radio_button :sun_cush, TRUE %>
+					<%= f.label :sun_cush, 'No' %>
+					<%= f.radio_button :sun_cush, FALSE %>
+				</span>
+			</p>
+			<p>
+			<label>Lona Parabrisas</label>
+				<span class="radio">
+					<%= f.label :windscreen_cover, 'S&iacute;' %>
+					<%= f.radio_button :windscreen_cover, TRUE %>
+					<%= f.label :windscreen_cover, 'No' %>
+					<%= f.radio_button :windscreen_cover, FALSE %>
+				</span>
+			</p>
+			<p>
+			<label>Lona de Invierno</label>
+				<span class="radio">
+					<%= f.label :winter_covers, 'S&iacute;' %>
+					<%= f.radio_button :winter_covers, TRUE %>
+					<%= f.label :winter_covers, 'No' %>
+					<%= f.radio_button :winter_covers, FALSE %>
+				</span>
+			</p>
+			<p>
+			<label>Lona</label>
+				<span class="radio">
+					<%= f.label :awning, 'S&iacute;' %>
+					<%= f.radio_button :awning, TRUE %>
+					<%= f.label :awning, 'No' %>
+					<%= f.radio_button :awning, FALSE %>
+				</span>
+			</p>
+			<p>
+			<label>Capote</label>
+				<span class="radio">
+					<%= f.label :sprayhood, 'S&iacute;' %>
+					<%= f.radio_button :sprayhood, TRUE %>
+					<%= f.label :sprayhood, 'No' %>
+					<%= f.radio_button :sprayhood, FALSE %>
+				</span>
+			</p>
+			<p>
+			<label>Bimini</label>
+				<span class="radio">
+					<%= f.label :bimini, 'S&iacute;' %>
+					<%= f.radio_button :bimini, TRUE %>
+					<%= f.label :bimini, 'No' %>
+					<%= f.radio_button :bimini, FALSE %>
+				</span>
+			</p>
+		</fieldset>
+		
+		<fieldset class="thirds">
+			<legend>Anotaciones</legend>
+			<p>
+				<%= f.label :cover_state, "Estado de Colchonetas, Toldos y Lonas" %>
+				<%= f.select :cover_state, Boat::CONDITIONS, :prompt => "Elegir" %>
+			</p>
+			<p>
+				<%= f.label :cover_details, "Detalles" %>
+				<%= f.text_area :cover_details %>
+			</p>
+		</fieldset>
+	</fieldset>
+	
+	<!-- Materials -->
+	<fieldset>
+		<legend accesskey="">Materials</legend>
+		
+		<fieldset id="teka_y_tapicer&iacute;a" class="halves">
+			<legend>Teka y Tapicer&iacute;a</legend>
+			<p>
+			<label>Cubierta de Teka</label>
+				<span class="radio">
+					<%= f.label :teak_deck, 'S&iacute;' %>
+					<%= f.radio_button :teak_deck, TRUE %>
+					<%= f.label :teak_deck, 'No' %>
+					<%= f.radio_button :teak_deck, FALSE %>
+				</span>
+			</p>
+			<p>
+			<label>Ba&ntilde;era de Teka</label>
+				<span class="radio">
+					<%= f.label :teak_cockpit, 'S&iacute;' %>
+					<%= f.radio_button :teak_cockpit, TRUE %>
+					<%= f.label :teak_cockpit, 'No' %>
+					<%= f.radio_button :teak_cockpit, FALSE %>
+				</span>
+			</p>
+			<p>
+			<label>Interior de Madera</label>
+				<span class="radio">
+					<%= f.label :teak_int, 'S&iacute;' %>
+					<%= f.radio_button :teak_int, TRUE %>
+					<%= f.label :teak_int, 'No' %>
+					<%= f.radio_button :teak_int, FALSE %>
+				</span>
+			</p>
+			<p>
+				<%= f.label :upholstery_int, "Tapicer&iacute;a Interior" %>
+				<%= f.text_field :upholstery_int %>
+			</p>
+		</fieldset>
+		
+		<fieldset id="anotaciones" class="halves">
+			<legend>Anotaciones</legend>
+			<p>
+				<%= f.label :teak_state, "Estado de Teka y Tapicer&iacute;a" %>
+				<%= f.select :teak_state, Boat::CONDITIONS, :prompt => "Elegir" %>
+			</p>
+			<p>
+				<%= f.label :teak_details, "Detalles" %>
+				<%= f.text_area :teak_details %>
+			</p>
+		</fieldset>
+	</fieldset>
+	
+	<!-- Miscellaneous -->
+	<fieldset>
+		<legend accesskey="V">Informaci&oacute;n Variada</legend>
+		
+		<fieldset class="halves">
+			<legend>Tratamientos</legend>
+			<p>
+			<label>Tratamiento Osmosis</label>
+				<span class="radio">
+					<%= f.label :osmosis_treat, 'S&iacute;' %>
+					<%= f.radio_button :osmosis_treat, TRUE %>
+					<%= f.label :osmosis_treat, 'No' %>
+					<%= f.radio_button :osmosis_treat, FALSE %>
+				</span>
+			</p>
+			<p>
+				<%= f.label :os_treatyear, "A&ntilde;o de Tratamiento" %>
+				<%= f.select :os_treatyear, Boat::YEARS, :prompt => "Elegir" %>
+			</p>
+			<p>
+			<label>Tratamiento Anti-Osmosis</label>
+				<span class="radio">
+					<%= f.label :osmosis_prev, 'S&iacute;' %>
+					<%= f.radio_button :osmosis_prev, TRUE %>
+					<%= f.label :osmosis_prev, 'No' %>
+					<%= f.radio_button :osmosis_prev, FALSE %>
+				</span>
+			</p>
+			<p>
+				<%= f.label :os_prevyear, "A&ntilde;o de Tratamiento" %>
+				<%= f.select :os_prevyear, Boat::YEARS, :prompt => "Elegir" %>
+			</p>
+		</fieldset>
+		
+		<fieldset class="halves">
+			<legend>Anotaciones</legend>
+			<p>
+				<%= f.label :osmosis_details, "Detalles" %>
+				<%= f.text_area :osmosis_details %>
+			</p>
+		</fieldset>
+	</fieldset>
+	
+	<!-- Private Info -->
+	<fieldset>
+		<legend accesskey="P">Informaci&oacute;n Privada</legend>
+		
+		<fieldset class="thirds">
+			<legend>Contacto</legend>
+			<p>
+				<%= f.label :boat_name, "Nombre de Barco" %>
+				<%= f.text_field :boat_name %>
+			</p>
+			<p>
+				<%= f.label :contact_name, "Nombre Contacto" %>
+				<%= f.text_field :contact_name %>
+			</p>
+			<p>
+				<%= f.label :email, "Email" %>
+				<%= f.text_field :email %>
+			</p>
+			<p>
+				<%= f.label :contact_number, "Contacto N&uacute;mero 1" %>
+				<%= f.text_field :contact_number %>
+			</p>
+			<p>
+				<%= f.label :contact_number2, "Contacto N&uacute;mero 2" %>
+				<%= f.text_field :contact_number2 %>
+			</p>
+		</fieldset>
+		
+		<fieldset class="thirds">
+			<legend>Localizaci&oacute;n</legend>
+			<p>
+				<%= f.label :port, "Puerto" %>
+				<%= f.text_field :port %>
+			</p>
+			<p>
+				<%= f.label :pontoon, "Pantal&aacute;n" %>
+				<%= f.text_field :pontoon %>
+			</p>
+			<p>
+			<label>Amarre Disponible</label>
+				<span class="radio">
+					<%= f.label :berth_avail, 'S&iacute;' %>
+					<%= f.radio_button :berth_avail, TRUE %>
+					<%= f.label :berth_avail, 'No' %>
+					<%= f.radio_button :berth_avail, FALSE %>
+				</span>
+			</p>
+			<p>
+				<%= f.label :berth_details, "Detalles del Amarre" %>
+				<%= f.text_area :berth_details %>
+			</p>
+		</fieldset>
+		
+		<fieldset class="thirds">
+			<legend>Anotaciones</legend>
+			<p>
+				<%= f.label :sellers_price, "Due&ntilde;o Pide" %>
+				<%= f.text_field :sellers_price %>
+			</p>
+			<p>
+				<label>Buscando Otro Barco</label>
+				<span class="radio">
+					<%= f.label :looking, 'S&iacute;' %>
+					<%= f.radio_button :looking, TRUE %>
+					<%= f.label :looking, 'No' %>
+					<%= f.radio_button :looking, FALSE %>
+				</span>
+			</p>
+			<p>
+				<%= f.label :other_details, "Detalles" %>
+				<%= f.text_area :other_details %>
+			</p>
+			<p>
+				<%= f.label :offer_new, "Nuevo en el Mercado/En Oferta" %>
+				<%= f.select :offer_new, Boat::OFFER_NEW, :prompt => "Elegir" %>
+			</p>
+			<p>
+				<%= f.label :for_sale, "En Venta?" %>
+				<%= f.select :for_sale, Boat::FOR_SALE, :prompt => "Elegir" %>
+			</p>
+		</fieldset>
+	</fieldset>
+	
+	<fieldset>
+		<legend>Fotos</legend>
+		<div id="photos">
+		     <% if @boat.new_record? %>
+		       <%= render :partial => 'photo', :locals => { :form => f, :photo => @boat.photos.build } %>
+			<% else %>
+					<% f.fields_for :photos do |p| %>
+
+						<%= p.label :name %>
+						<%= p.text_field :name %>
+				    	<%= p.file_field :data %>
+					<% end %>
+		    <% end %>
+		</div>
+		<%= add_object_link("New Photo", f, @boat.photos.build, "photo", "#photos") %>
+	</fieldset>
+	
+	<p><%= f.submit button_label %></p>
+<% end %>

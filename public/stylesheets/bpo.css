@@ -1,0 +1,340 @@
+/* !INFO */
+/*
+*************************************************
+
+
+
+BPO	
+General Screen Styles
+
+
+
+Created by Abu von Bondvillain
+http://www.adamta.it
+
+
+
+*************************************************
+*/
+
+
+
+/* !NOTES */
+/* vertical rhythm
+h1=14px  -  font-size = 14/12 = 1.167em - and to maintain line-height at 18px - line-height = 18/14 = 1.286em
+68.75% x 16px (default) = 11px; 1.5 x 11 = 16.5px
+images -- remember baseline */
+
+/* Reduced size type with incremental leading
+(http://www.markboulton.co.uk/journal/comments/incremental_leading/)
+
+This could be used for side notes. For smaller type, you don't necessarily want to follow the 1.5x vertical rhythm -- the line-height is too much. 
+   
+Using this class, it reduces your font size and line-height so that for every four lines of normal sized type, there is five lines of the sidenote. eg:
+
+New type size in em's: 10px (wanted side note size) / 12px (existing base size) = 0.8333 (new type size in ems)
+New line-height value:
+     12px x 1.5 = 18px (old line-height)
+     18px x 4 = 72px 
+     72px / 5 = 14.4px (new line height)
+     14.4px / 10px = 1.44 (new line height in em's)
+     
+Still 1.5 x normal font size as baseline */
+
+/* stylesheet organisation / Style Guide
+http://www.viget.com/inspire/organizing-your-stylesheet-using-css-edit/
+
+my take:
+1. info, notes, palette comments
+2. meyer reset
+3. general selectors
+	* canvas colour
+	* set vertical rhythym
+	* set default fonts
+	* text elements - a, p, ol, ul, etc...
+	* forms
+	* tables
+	* images
+4. universal classes
+	* utility classes: .alt, .mir, .incr (incremental leading)
+	* text classes: .foreign, .and, ...
+5. universal layout
+	* 2-column layout?
+	* 3-columns with header and footer?
+	* etc...
+6. static layout
+	* logo
+	* footer styling
+	* sidebar styling
+	* general content styling
+7. page-specific styling
+	* items that only appear non-generally
+	* if you need to modify an existing style just for one or a few pages, stick a unique ID high up (body tag is usually good) and toss your overrides at the end of the document.
+	* odds and ends */
+
+
+/* !PALETTE */
+/*
+dark blue:	#151E2D
+light blue:	#607D9D
+
+pink:	#AA35C8
+green:	#66C732
+orange:	#BA712D
+blue:	#4280C9
+*/
+
+
+
+
+
+/* !RESET */
+/* -------------------------------------------------------------*/
+
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td { margin: 0; padding: 0; border: 0; outline: 0; font-weight: inherit; font-style: inherit; font-size: 100%; font-family: inherit; vertical-align: baseline; }
+	
+:focus { outline: 0; } /* remember to define focus styles! */
+body { line-height: 1; color: black; background: white; }
+ol, ul { list-style: none; }
+table { border-collapse: separate; border-spacing: 0; } /* tables still need 'cellspacing="0"' in the markup */
+caption, th, td { text-align: left; font-weight: normal; }
+blockquote:before, blockquote:after, q:before, q:after { content: ""; }
+blockquote, q { quotes: "" ""; }
+
+
+
+
+
+/* !GENERAL SELECTORS */
+/* -------------------------------------------------------------*/
+
+
+/* canvas colour */
+html, body { background: #151E2D; }
+
+
+/* vertical rhythm */
+body { font-size: 68.75%; line-height: 1.5em; }
+html>body { font-size: 11px; }
+
+
+/* default fonts */
+body { font-family: Arial, Helvetica, Verdana, sans-serif; color: #333; }
+h1, h2, h3,
+h4, h5, h6 { font-family: Georgia, Palatino, "Times New Roman", serif; }
+
+
+/* headings */
+h1, h2, h3, h4, h5, h6 { text-transform: uppercase; }
+h1 { font-size: 48px; line-height: 33px; font-family: "HelveticaNeue-UltraLight", "Helvetica Neue UltraLight", "Helvetica Neue Light", "HelveticaNeue-Light", "Helvetica Neue", Helvetica, Arial, Verdana, sans-serif; font-weight: 100; color: #FFF; text-align: center; padding-top: 80px; text-transform: capitalize; background: url(../images/yacht.png) no-repeat; height: 200px; }
+h2, h3 { font-size: 24px; line-height: 1.1em; letter-spacing: 1px; text-align: center; width: 960px; padding: 5px 0; color: #FFF; clear: both; position: relative; margin-bottom: 0.75em; }
+h3 { background: #151E2D;}
+/* h3 { font-size: 24px; line-height: 1.1em; letter-spacing: 1px; text-align: center; width: 960px; padding: 5px 0; color: #151E2D; clear: both; position: relative; margin-bottom: 0.75em; outline: 1px solid #151E2D; } */
+h4 { font-size: 1.273em; line-height: 1.179em; letter-spacing: 1px; }
+
+
+/* text elements */
+p { text-align: justify; margin-bottom: 1.5em; padding: 0 10px; }
+
+a { text-decoration: none; }
+a:link, a:visited { color: #000; }
+a:hover, a:active { color: #000; }
+
+ul, ol { margin-bottom: 1.5em; list-style-position: inside; padding: 0 10px; }
+ul { }
+ol { list-style-type: decimal; }
+dl { margin: 0 0 1.5em 0; }
+dl dt { font-weight: bold; }
+
+blockquote { margin: 0 0 1.5em 1.5em; font-style: italic; }
+
+address span { display: block; text-align: center; }
+
+strong { font-weight: bold; }
+em { font-style: italic; }
+
+acronym { font-weight: normal; font-style: normal; border-bottom: 1px dotted #000; }
+
+pre { font-size: xx-small; margin-bottom: 1.5em; background: #eee; border: 1px solid #ddd; padding: 1.5em; }
+
+address { font: 10px/15px Verdana, Lucida, Arial, sans-serif; }
+
+table { padding: 0 5px; width: 100%; margin-bottom: 3em; }
+th { padding: 0 5px; font-weight: bold; border-bottom: 1px solid black; border-top: 1px solid black; text-align: center; } 
+td { padding: 5px; border-bottom: 1px solid black; vertical-align: middle; text-align: center; }
+caption { padding: 10px; font-weight: bold; text-align: center; }
+fieldset { border: 1px solid #151E2D; padding: 25px; margin: 50px 0; }
+legend { color: #FFF; background: #151E2D; padding: 6px; margin: 0 10px; font-family: Georgia, Palatino, "Times New Roman", serif; font-size: 1.25em; text-transform: uppercase;  }
+label { display: block; font-weight: bold; }
+
+
+/* images */
+img { margin: 13px 0 1.5em 12px; }
+
+
+
+
+
+/* !GENERAL CLASSES */
+/* -------------------------------------------------------------*/
+
+.alt { display: none; }
+.container { position: relative; padding: 0; margin: 0 auto; }
+.line { display: block; }
+.boats { float: left; margin-bottom: 50px; }
+.data { width: 300px; padding: 22px 10px; position: relative; }
+.gallery { width: 940px; padding: 10px; }
+
+/* image replacement */
+.mir { letter-spacing: -1000em; }
+/* Just for Opera, but hide from MacIE */
+/*\*/ html>body .mir { letter-spacing: normal; text-indent: -9999em; overflow: hidden; }
+/* End of hack */
+
+/* incremental leading */
+p.incr, .incr p { font-size: 10px; line-height: 1.44em; margin-bottom: 18px; }
+
+
+
+
+
+/* !MASTHEAD & NAVIGATION */
+/* -------------------------------------------------------------*/
+
+#masthead { height: 200px; background: url(../images/seatile.png) repeat-x scroll; }
+
+#navbar { width: 1000px; height: 75px; }
+	#menu { position: absolute; top: 45px; left: 24px; width: 356px; }
+		#menu li { width: 85px; margin: 0 2px; float: left; font-family: Arial, Helvetica, Verdana, sans-serif; color: #FFF; font-size: 15px; text-align: center; padding: 7px 0; }
+		#menu li:hover { position: relative; top: -10px; }
+			#menu li a { color: #FFF; }
+		#menu li#inicio { background: #BA712D; border-bottom: #BA712D solid 10px; }
+		#menu li#veleros { background: #4280C9; border-bottom: #4280C9 solid 10px; }
+		#menu li#motores { background: #66C732; border-bottom: #66C732 solid 10px; }
+		#menu li#contacto { background: #AA35C8; border-bottom: #AA35C8 solid 10px; }
+	
+	#lang { display: none; } /* hide language flags until I8n done */
+	#lang { position: absolute; top: 59px; right: 27px; width: 84px; }
+		#lang li { width: 24px; height: 16px; margin: 0 2px; float: left; }
+		#lang li#en { background: url("../images/en.png") no-repeat center; }
+		#lang li#es { background: url("../images/es.png") no-repeat center; }
+		#lang li#fr { background: url("../images/fr.png") no-repeat center; }
+
+
+
+
+
+/* !MAINSTAGE */
+/* -------------------------------------------------------------*/
+
+#mainstage { width: 960px; border: 20px solid #FFF; background: #FFF; }
+
+/* boats */
+div.boat { width: 294px; background: url(../images/frame.png) no-repeat; float: left; margin: 13px; }
+p.price, p.model, p.link { width: 263px; text-align: center; display: block; margin: 0 0 0 3px; }
+div.images { clear: both; }
+div.designstats { clear: both; position: relative; top: 0; left: 0; width: 960px; }
+#mininav { clear: both; }
+#specs { width: 960px; margin-top: 20px;}
+table.data { width: 400px; margin: 0 auto; }
+div.thumblink p { text-align: center; }
+#newboat, #edit { text-transform: capitalize; width: 200px; height: 100px; float: left; margin-left: 10px; }
+
+
+/* =admin */
+fieldset.halves, fieldset.thirds { float: left; margin: 5px; border: 1px solid #607D9D; height: 600px; }
+	fieldset.halves legend, fieldset.thirds legend { background: #FFF; border: 1px solid #607D9D; color: #151E2D; text-transform: lowercase; font-weight: bold;}
+fieldset.halves { width: 392px; }
+fieldset.thirds { width: 240px; }
+
+span.radio label { display: inline; }
+fieldset.thirds textarea { width: 225px; height: 150px; }
+
+/* =contact */
+#pongase_en_contacto.halves { height: auto; }
+#pongase_en_contacto ul li { margin-bottom: 2em; }
+
+
+
+
+
+/* !FOOTER */
+/* -------------------------------------------------------------*/
+
+#footer { width: 1000px; height: 75px; padding: 25px; background-color: #151E2D; margin-left: -25px; margin-bottom: -25px; clear: both;}
+	#numbers, #adr, #email { width: 32%; float: left; color: #FFF; text-align: center; }
+	
+	table,td
+	{
+	  font                 : small/1.5 "Tahoma", "Bitstream Vera Sans", Verdana, Helvetica, sans-serif;
+	}
+	td {
+		border-collapse      : collapse;
+		border               : 1px solid #CCC;
+ 	}
+	table
+	{
+		border                :none;
+	}
+	thead th,
+	tbody th
+	{
+		background            : #FFF url(th_bck.gif) repeat-x;
+	  color                 : #666;  
+		padding               : 5px 10px;
+	  border-left           : 1px solid #CCC;
+	}
+	tbody th
+	{
+	  background            : #fafafb;
+	  border-top            : 1px solid #CCC;
+	  text-align            : center;
+	  font-weight           : normal;
+	}
+	tbody tr td
+	{
+		padding               : 5px 10px;
+	  color                 : #666;
+	}
+	tbody tr:hover
+	{
+	  background            : #FFF url(tr_bck.gif) repeat;
+	}
+
+	tbody tr:hover td
+	{
+	  color                 : #454545;
+	}
+	tfoot td,
+	tfoot th
+	{
+	  border-left           : none;
+	  border-top            : 1px solid #CCC;
+		padding               : 4px;
+	  background            : #FFF url(foot_bck.gif) repeat;
+	  color                 : #666;
+	}
+	caption
+	{
+		text-align            : left;
+		font-size             : 120%;
+		padding               : 10px 0;
+		color                 : #666;
+	}
+	table a:link
+	{
+		color                 : #666;
+	}
+	table a:visited
+	{
+		color                 : #666;
+	}
+	table a:hover
+	{
+		color                 : #003366;
+		text-decoration       : none;
+	}
+	table a:active
+	{
+		color                 : #003366;
+	}

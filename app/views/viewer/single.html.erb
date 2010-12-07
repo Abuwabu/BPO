@@ -1,0 +1,301 @@
+<h2><%=h @boat.bmake %> <%=h @boat.model %></h2>
+
+<div class="boats">
+	<div class="boat">
+		<%= image_tag @boat.photos[0].data.url(:cover) %>
+		<p class="model"><%=h @boat.bmake %> <%=h @boat.model %></p>
+		<% if @boat.price.nil? || @boat.price == 0 %>
+			<p class="price">¡A CONSULTAR!</p>
+		<% else %>
+			<p class="price"><%= number_to_currency(@boat.price, :precision => 0, :unit => "&euro;") %></p>
+		<% end %>
+	</div>
+	
+	<div class="gallery">
+		<% @boat.photos.each do |photo| %>
+			<a href="<%= photo.data.url %>" rel="lightbox[set]" title="<%= photo.name %>" width="100px" >
+				<%= image_tag photo.data.url(:thumb) %>
+			</a>
+			<% end %>
+	</div>
+	
+	<h3 style='visibility: hidden;'></h3>
+	<h3>Información Detallada</h3>
+	<div id="specs">	
+		<% if @boat.btype? || @boat.hull? || @boat.material? || @boat.keel? || @boat.rudder? || @boat.bmake? || @boat.model? || @boat.architect? || @boat.builder? || @boat.category? || @boat.flybridge?  %>
+		<table class='data'>
+			<th colspan="2">Dise&ntilde;o</th>
+			<% if @boat.btype? %><tr><td>Tipo</td><td><%=h @boat.btype %></td></tr><% end  %>
+			<% if @boat.hull? %><tr><td>Casco</td><td><%=h @boat.hull %></td></tr><% end  %>
+			<% if @boat.material? %><tr><td>Material</td><td><%=h @boat.material %></td></tr><% end  %>
+			<% if @boat.keel? %><tr><td>Quilla</td><td><%=h @boat.keel %></td></tr><% end  %>
+			<% if @boat.rudder? %><tr><td>Tim&oacute;n</td><td><%=h @boat.rudder %></td></tr><% end  %>
+			
+			<% if @boat.flybridge? %><tr><td>Flybridge:</td><td><%=h @boat.flybridge %></td></tr><% end  %>
+		
+			<% if @boat.bmake? %><tr><td>Marca</td><td><%=h @boat.bmake %></td></tr><% end  %>
+			<% if @boat.model? %><tr><td>Modelo</td><td><%=h @boat.model %></td></tr><% end  %>
+			<% if @boat.architect? %><tr><td>Arquitecto</td><td><%=h @boat.architect %></td></tr><% end  %>
+			<% if @boat.builder? %><tr><td>Astillero</td><td><%=h @boat.builder %></td></tr><% end  %>
+			<% if @boat.category? %><tr><td>Categoria</td><td><%=h @boat.category %></td></tr><% end  %>
+		</table>
+		<% end %>
+	
+		<% if @boat.length? || @boat.beam? || @boat.draft? || @boat.headroom? || @boat.weight? %>
+		<table class='data'>
+			<th colspan="2">Medidas</th>
+			<% if @boat.length? %><tr><td>Eslora</td><td><%=h @boat.length %></td></tr><% end  %>
+			<% if @boat.beam? %><tr><td>Manga</td><td><%=h @boat.beam %></td></tr><% end  %>
+			<% if @boat.draft? %><tr><td>Calado</td><td><%=h @boat.draft %></td></tr><% end  %>
+			<% if @boat.headroom? %><tr><td>Altura Interior</td><td><%=h @boat.headroom %></td></tr><% end  %>
+			<% if @boat.weight? %><tr><td>Peso (kg)</td><td><%=h @boat.weight %></td></tr><% end  %>
+		</table>	
+		<% end %>
+	
+		<% if @boat.year? || @boat.price? || @boat.tax_paid? || @boat.flag? || @boat.reg? || @boat.docs? || @boat.location? || @boat.loc_details? %>
+		<table class='data'>
+			<th colspan="2">Informaci&oacute;n B&aacute;sica</th>
+			<% if @boat.year? %><tr><td>A&ntilde;o</td><td><%=h @boat.year %></td></tr><% end  %>
+			<% if @boat.price? %><tr><td>Precio</td><td><%=h @boat.price %></td></tr><% end  %>
+			<% if @boat.tax_paid? %><tr><td>IVA Pagado</td><td><%=h @boat.tax_paid %></td></tr><% end  %>
+			<% if @boat.flag? %><tr><td>Bandera</td><td><%=h @boat.flag %></td></tr><% end  %>
+			<% if @boat.reg? %><tr><td>Lista</td><td><%=h @boat.reg %></td></tr><% end  %>
+			<% if @boat.docs? %><tr><td>Documentaci&oacute;n</td><td><%=h @boat.docs %></td></tr><% end  %>
+			<% if @boat.location? %><tr><td>Se Puede Ver En:</td><td><%=h @boat.location %></td></tr><% end  %>
+			<% if @boat.loc_details? %><tr><td>Detalles Locaci&oacute;n</td><td><%=h @boat.loc_details %></td></tr><% end  %>
+		</table>
+		<% end %>
+	
+		<% if @boat.num_motors? || @boat.eng_make? || @boat.eng_model? || @boat.eng_type? || @boat.eng_cyls? || @boat.eng_fuel? || @boat.eng_hp? || @boat.eng_cruisespd? || @boat.eng_maxspd? || @boat.fuelcap? || @boat.eng_serviced? || @boat.eng_hours? || @boat.eng_notes? %>
+		<table class='data'>
+			<th colspan="2">Motoras</th>
+			<% if @boat.num_motors? %><tr><td>Motoras</td><td><%=h @boat.num_motors %></td></tr><% end %>
+			<% if @boat.eng_make? %><tr><td>Marca</td><td><%=h @boat.eng_make %></td></tr><% end %>
+			<% if @boat.eng_model? %><tr><td>Modelo</td><td><%=h @boat.eng_model %></td></tr><% end %>
+			<% if @boat.eng_type? %><tr><td>Tipo</td><td><%=h @boat.eng_type %></td></tr><% end %>
+			<% if @boat.eng_cyls? %><tr><td>N&uacute;mero Cilindros</td><td><%=h @boat.eng_cyls %></td></tr><% end %>
+			<% if @boat.eng_fuel? %><tr><td>Combustible</td><td><%=h @boat.eng_fuel %></td></tr><% end %>
+			<% if @boat.eng_hp? %><tr><td>Potencia</td><td><%=h @boat.eng_hp %></td></tr><% end %>
+			<% if @boat.eng_cruisespd? %><tr><td>Velocidad Crucero</td><td><%=h @boat.eng_cruisespd %></td></tr><% end %>
+			<% if @boat.eng_maxspd? %><tr><td>Velocidad Maximo</td><td><%=h @boat.eng_maxspd %></td></tr><% end %>
+			<% if @boat.fuelcap? %><tr><td>Capacidad de Fuel</td><td><%=h @boat.fuelcap %></td></tr><% end %>
+		
+		
+			<% if @boat.eng_serviced? %><tr><td>Mantenamiento</td><td>S&iacute;</td></tr><% end %>
+			<% if @boat.eng_hours? %><tr><td>Horas</td><td><%=h @boat.eng_hours %></td></tr><% end %>
+			<% if @boat.eng_notes? %><tr><td>Detalles</td><td><%=h @boat.eng_notes %></td></tr><% end %>
+		</table>
+		<% end %>
+	
+		<% if @boat.trans? || @boat.props? || @boat.flaps? || @boat.trim? || @boat.bowthrust? || @boat.sternthrust?  %>
+		<table class='data'>
+			<th>Inversor y H&eacute;lices</th>
+			<% if @boat.trans? %><tr><td>Inversor: <%=h @boat.trans %></td></tr><% end %>
+			<% if @boat.props? %><tr><td>H&eacute;lices: <%=h @boat.props %></td></tr><% end %>
+			<% if @boat.flaps? %><tr><td>Flaps</td></tr><% end %>
+			<% if @boat.trim? %><tr><td>Trim</td></tr><% end %>
+			<% if @boat.bowthrust? %><tr><td>H&eacute;lice de Proa</td></tr><% end %>
+			<% if @boat.sternthrust? %><tr><td>H&eacute;lice de Popa</td></tr><% end %>
+		</table>
+		<% end %>
+	
+		<% if @boat.autopilot? || @boat.log? || @boat.sounder? || @boat.gps? || @boat.vhf? || @boat.dsc? || @boat.anem? || @boat.radar? || @boat.plotter? || @boat.vane? || @boat.navtex? || @boat.blu? || @boat.ais? || @boat.nav_notes? %>
+		<table class='data'>
+			<th>Equipo de Navegaci&oacute;n</th>
+			<% if @boat.autopilot? %><tr><td>Piloto Autom&aacute;tico</td></tr><% end %>
+			<% if @boat.log? %><tr><td>Corredera</td></tr><% end %>
+			<% if @boat.sounder? %><tr><td>Sonda</td></tr><% end %>
+			<% if @boat.gps? %><tr><td>GPS</td></tr><% end %>
+			<% if @boat.vhf? %><tr><td>VHF</td></tr><% end %>
+			<% if @boat.dsc? %><tr><td>DSC</td></tr><% end %>
+			<% if @boat.anem? %><tr><td>Anemometro</td></tr><% end %>
+			<% if @boat.radar? %><tr><td>Radar</td></tr><% end %>
+			<% if @boat.plotter? %><tr><td>Plotter</td></tr><% end %>
+			<% if @boat.vane? %><tr><td>Piloto de Viento</td></tr><% end %>
+			<% if @boat.navtex? %><tr><td>Navtex</td></tr><% end %>
+			<% if @boat.blu? %><tr><td>BLU</td></tr><% end %>
+			<% if @boat.ais? %><tr><td>AIS</td></tr><% end %>
+			<% if @boat.nav_notes? %><tr><td>Detalles: <%=h @boat.nav_notes %></td></tr><% end %>
+		</table>
+		<% end %>
+	
+		<% if @boat.raft? || @boat.flares? || @boat.epirb? || @boat.jackets? || @boat.fire_ext? %>
+		<table class='data'>
+			<th>Seguridad</th>
+			<% if @boat.raft? %><tr><td>Balsa Salvavidas (Certificada hasta: <%=h @boat.raft_cert %>)</td></tr><% end %>
+			<% if @boat.flares? %><tr><td>Bengalas (Certificada hasta:<%=h @boat.flares_cert %>)</td></tr><% end %>
+			<% if @boat.epirb? %><tr><td>Radio Baliza</td></tr><% end %>
+			<% if @boat.jackets? %><tr><td>Chalecos</td></tr><% end %>
+			<% if @boat.fire_ext? %><tr><td>Extinctor</td></tr><% end %>
+		</table>
+		<% end %>
+	
+		<% if @boat.babystay? || @boat.numsails? || @boat.sailarea? || @boat.main_roller? || @boat.gen_roller? || @boat.storm_jib? || @boat.spinnaker? || @boat.pole? || @boat.lazybag? || @boat.lazyjacks? || @boat.sailnotes? || @boat.masts? %>
+		<table class='data'>
+			<th>Velas y Jarcia</th>
+			<% if @boat.masts? %><tr><td>N&uacute;mero de Mastiles: <%=h @boat.masts %></td></tr><% end %>
+			<% if @boat.babystay? %><tr><td>Babystay</td></tr><% end %>
+			<% if @boat.numsails? %><tr><td>N&uacute;mero de Velas: <%=h @boat.numsails %></td></tr><% end %>
+			<% if @boat.sailarea? %><tr><td>Superficie V&eacute;lica: <%=h @boat.sailarea %></td></tr><% end %>
+			<% if @boat.main_roller? %><tr><td>Mayor Enrollable</td></tr><% end %>
+			<% if @boat.gen_roller? %><tr><td>G&eacute;nova Enrollable</td></tr><% end %>
+			<% if @boat.storm_jib? %><tr><td>Torment&iacute;n</td></tr><% end %>
+			<% if @boat.spinnaker? %><tr><td>Spinnaker</td></tr><% end %>
+			<% if @boat.pole? %><tr><td>Tang&oacute;n</td></tr><% end %>
+			<% if @boat.lazybag? %><tr><td>Lazybag</td></tr><% end %>
+			<% if @boat.lazyjacks? %><tr><td>Lazyjacks</td></tr><% end %>
+			<% if @boat.sailnotes? %><tr><td>Detalles: <%=h @boat.sailnotes %></td></tr><% end %>
+		</table>
+		<% end %>
+	
+		<% if @boat.cabins? || @boat.heads? || @boat.capacity? || @boat.doubles? || @boat.singles? || @boat.bunks? || @boat.convert? || @boat.intwheel? || @boat.layout_notes? %>
+		<table class='data'>
+			<th>Distribuci&oacute;n</th>
+			<% if @boat.cabins? %><tr><td>N&uacute;mero Camarotes: <%=h @boat.cabins %></td></tr><% end %>
+			<% if @boat.heads? %><tr><td>N&uacute;mero Ba&ntilde;os: <%=h @boat.heads %></td></tr><% end %>
+			<% if @boat.capacity? %><tr><td>Capacidad: <%=h @boat.capacity %></td></tr><% end %>
+			<% if @boat.doubles? %><tr><td>N&uacute;mero Matrimonios: <%=h @boat.doubles %></td></tr><% end %>
+			<% if @boat.singles? %><tr><td>N&uacute;mero Individuales: <%=h @boat.singles %></td></tr><% end %>
+			<% if @boat.bunks? %><tr><td>N&uacute;mero Literas: <%=h @boat.bunks %></td></tr><% end %>
+			<% if @boat.convert? %><tr><td>Sal&oacute;n Convertible</td></tr><% end %>
+			<% if @boat.intwheel? %><tr><td>Rueda del Tim&oacute;n Interior</td></tr><% end %>
+			<% if @boat.layout_notes? %><tr><td>Detalles: <%=h @boat.layout_notes %></td></tr><% end %>
+		</table>
+		<% end %>
+	
+		<% if @boat.aircon? || @boat.heating? || @boat.cushions? || @boat.sun_cush? || @boat.windscreen_cover? || @boat.winter_covers? || @boat.awning? || @boat.sprayhood? || @boat.bimini? || @boat.cover_state? || @boat.cover_details? %>
+		<table class='data'>
+			<th>Confort</th>
+			<% if @boat.aircon? %><tr><td>Aire Acondicionado</td></tr><% end %>
+			<% if @boat.heating? %><tr><td>Calefacci&oacute;n</td></tr><% end %>
+		
+			<% if @boat.cushions? %><tr><td>Colchonetas de Ba&ntilde;era</td></tr><% end %>
+			<% if @boat.sun_cush? %><tr><td>Colchonetas de Solarium</td></tr><% end %>
+			<% if @boat.windscreen_cover? %><tr><td>Lona Parabrisas</td></tr><% end %>
+			<% if @boat.winter_covers? %><tr><td>Lona de Invierno</td></tr><% end %>
+			<% if @boat.awning? %><tr><td>Lona</td></tr><% end %>
+			<% if @boat.sprayhood? %><tr><td>Capote</td></tr><% end %>
+			<% if @boat.bimini? %><tr><td>Bimini</td></tr><% end %>
+		
+			<% if @boat.cover_state? %><tr><td>Estado de Material: <%=h @boat.cover_state %></td></tr><% end %>
+			<% if @boat.cover_details? %><tr><td>Detalles: <%=h @boat.cover_details %></td></tr><% end %>
+		</table>
+		<% end %>
+	
+		<% if @boat.fridges? || @boat.freezer? || @boat.icemaker? || @boat.oven? || @boat.microwave? || @boat.hobs? || @boat.domes_fuel? || @boat.washer? || @boat.dryer? || @boat.dishwash? %>
+		<table class='data'>
+			<th>Electrodom&eacute;sticos</th>
+			<% if @boat.fridges? %><tr><td>Neveras: <%=h @boat.fridges %></td></tr><% end %>
+			<% if @boat.freezer? %><tr><td>Congelador</td></tr><% end %>
+			<% if @boat.icemaker? %><tr><td>Cubitera</td></tr><% end %>
+			<% if @boat.oven? %><tr><td>Horno</td></tr><% end %>
+			<% if @boat.microwave? %><tr><td>Microonda</td></tr><% end %>
+			<% if @boat.hobs? %><tr><td>Fuegos: <%=h @boat.hobs %></td></tr><% end %>
+			<% if @boat.domes_fuel? %><tr><td>Tipo de Combustible: <%=h @boat.domes_fuel %></td></tr><% end %>
+			<% if @boat.washer? %><tr><td>Lavadora</td></tr><% end %>
+			<% if @boat.dryer? %><tr><td>Secadora</td></tr><% end %>
+			<% if @boat.dishwash? %><tr><td>Lavavajillas</td></tr><% end %>
+		</table>
+		<% end %>
+	
+		<% if @boat.dvd? || @boat.tdt? || @boat.sat? || @boat.tv? || @boat.cassette? || @boat.cd? || @boat.int_speakers? || @boat.ext_speakers? %>
+		<table class='data'>
+			<th>DVD, TV y Radio</th>
+			<% if @boat.dvd? %><tr><td>DVD</td></tr><% end %>
+			<% if @boat.tdt? %><tr><td>Antena TDT</td></tr><% end %>
+			<% if @boat.sat? %><tr><td>Antena Satelite</td></tr><% end %>
+			<% if @boat.tv? %><tr><td>TV</td></tr><% end %>
+			<% if @boat.cassette? %><tr><td>Radio Cassette</td></tr><% end %>
+			<% if @boat.cd? %><tr><td>Radio CD</td></tr><% end %>
+			<% if @boat.int_speakers? %><tr><td>Altavoces Interior</td></tr><% end %>
+			<% if @boat.ext_speakers? %><tr><td>Altavoces Exterior</td></tr><% end %>
+		</table>
+		<% end %>
+	
+		<% if @boat.dinghy? || @boat.outboard? || @boat.dinghy_notes? || @boat.passarelle? || @boat.pass_hyd? || @boat.davits? || @boat.bathe_plat? || @boat.swim_ladd? %>
+		<table class='data'>
+			<th>Equipo de Cubierta</th>
+			<% if @boat.dinghy? %>
+				<tr><td>Auxiliar<% if @boat.semi_rig? %> Semi-Rigida<% end %></td></tr>
+			<% end %>
+			<% if @boat.outboard? %>
+				<tr><td>Fueraborda<% if @boat.fourstroke? %> 4-tiempos<% end %></td></tr>
+			<% end %>
+			<% if @boat.dinghy_notes? %><tr><td>Detalles: <%=h @boat.dinghy_notes %></td></tr><% end %>
+		
+			<% if @boat.passarelle? %><tr><td>Pasarela B&aacute;sica</td></tr><% end %>
+			<% if @boat.pass_hyd? %><tr><td>Pasarela Hidr&aacute;ulica</td></tr><% end %>
+			<% if @boat.davits? %><tr><td>Pescantes</td></tr><% end %>
+			<% if @boat.bathe_plat? %><tr><td>Plataforma de Ba&ntilde;o</td></tr><% end %>
+			<% if @boat.swim_ladd? %><tr><td>Escalera de Ba&ntilde;o</td></tr><% end %>
+		</table>
+		<% end %>
+	
+		<% if @boat.toilet? || @boat.black_tank? || @boat.grey_tank? || @boat.purifier? || @boat.water_heater? %>
+		<table class='data'>
+			<th>Sistema de Agua</th>
+			<% if @boat.toilet? %><tr><td>Tipo de Water: <%=h @boat.toilet %></td></tr><% end %>
+			<% if @boat.black_tank? %>
+				<tr><td>Deposito de Aguas Negras<% if @boat.black_cap? %> (<%=h @boat.black_cap %> litros)<% end %></td></tr>
+			<% end %>
+			<% if @boat.grey_tank? %>
+				<tr><td>Deposito de Aguas Negras<% if @boat.grey_cap? %> (<%=h @boat.black_cap %> litros)<% end %></td></tr>
+			<% end %>
+			<% if @boat.purifier? %><tr><td>Potabilizadora</td></tr><% end %>
+			<% if @boat.water_heater? %><tr><td>Calentador de Agua</td></tr><% end %>
+		</table>
+		<% end %>
+	
+		<% if @boat.teak_deck? || @boat.teak_cockpit? || @boat.teak_int? || @boat.upholstery_int? || @boat.teak_state? || @boat.teak_details? %>
+		<table class='data'>
+			<th>Madera y Tapicer&iacute;a</th>
+			<% if @boat.teak_deck? %><tr><td>Cubierta de Teka</td></tr><% end %>
+			<% if @boat.teak_cockpit? %><tr><td>Ba&ntilde;era de Teka</td></tr><% end %>
+			<% if @boat.teak_int? %><tr><td>Interior de Madera</td></tr><% end %>
+			<% if @boat.upholstery_int? %><tr><td>Tapicer&iacute;a Interior: <%=h @boat.upholstery_int %></td></tr><% end %>
+			<% if @boat.teak_state? %><tr><td>Estado de Teka y Tapicer&iacute;a: <%=h @boat.teak_state %></td></tr><% end %>
+			<% if @boat.teak_details? %><tr><td>Detalles: <%=h @boat.teak_details %></td></tr><% end %>
+		</table>
+		<% end %>
+	
+		<% if @boat.numancs? || @boat.anc_notes? || @boat.chain? || @boat.ewindlass? || @boat.mwindlass? || @boat.windlass_notes? %>
+		<table class='data'>
+			<th>Anclas</th>
+			<% if @boat.numancs? %><tr><td>N&uacute;mero Anclas: <%=h @boat.numancs %></td></tr><% end %>
+			<% if @boat.anc_notes? %><tr><td>Tipos y Pesos de Anclas: <%=h @boat.anc_notes %></td></tr><% end %>
+			<% if @boat.chain? %><tr><td>Cadena: <%=h @boat.chain %> metros</td></tr><% end %>
+			<% if @boat.ewindlass? %><tr><td>Molinete El&eacute;ctrico</td></tr><% end %>
+			<% if @boat.mwindlass? %><tr><td>Molinete Manual</td></tr><% end %>
+			<% if @boat.windlass_notes? %><tr><td>Detalles Molinetes: <%=h @boat.windlass_notes %></td></tr><% end %>
+		</table>
+		<% end %>
+	
+		<% if @boat.gen? || @boat.numbats? || @boat.shorepow? || @boat.numcharg? || @boat.invert? || @boat.solar? || @boat.windchrg? || @boat.elec_notes? %>
+		<table class='data'>
+			<th>Electricidad</th>
+			<% if @boat.gen? %><tr><td>Generador</td></tr><% end %>
+			<% if @boat.numbats? %><tr><td>N&uacute;mero Baterias: <%=h @boat.numbats %></td></tr><% end %>
+			<% if @boat.shorepow? %><tr><td>Tomas Tierra</td></tr><% end %>
+			<% if @boat.numcharg? %><tr><td>N&uacute;mero Cargadores: <%=h @boat.numcharg %></td></tr><% end %>
+			<% if @boat.invert? %><tr><td>12/220V Invertor</td></tr><% end %>
+			<% if @boat.solar? %><tr><td>Paneles Solares</td></tr><% end %>
+			<% if @boat.windchrg? %><tr><td>Cargador de Viento</td></tr><% end %>
+			<% if @boat.elec_notes? %><tr><td>Detalles Electricidad: <%=h @boat.elec_notes %></td></tr><% end %>
+		</table>
+		<% end %>
+	
+		<% if @boat.osmosis_treat? || @boat.osmosis_prev? || @boat.osmosis_details? %>
+		<table class='data'>
+			<th>Tratamientos</th>
+			<% if @boat.osmosis_treat? %>
+				<tr><td>Tratamiento Osmosis<% if @boat.os_treatyear? %> <%=h @boat.os_treatyear %><% end %></td></tr>
+			<% end %>
+			<% if @boat.osmosis_prev? %>
+				<tr><td>Tratamiento Anti-Osmosis<% if @boat.os_prevyear? %> <%=h @boat.os_prevyear %><% end %></td></tr>
+			<% end %>
+			<% if @boat.osmosis_details? %><tr><td>Detalles: <%=h @boat.osmosis_details %></td></tr><% end %>
+		</table>
+		<% end %>
+		
+	</div>
+</div>

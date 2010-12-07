@@ -1,0 +1,34 @@
+<h2>Ofertas del Mes</h2>
+<div class="boats">
+	<% @boats.each do |boat| %>
+		<% if boat.offer_new == "Oferta" && boat.for_sale == "Sí" %>
+			<div class="boat">
+				<%= image_tag boat.photos[0].data.url(:cover) %>
+				<p class="model"><%= boat.bmake %> <%= boat.model %></p>
+				<% if boat.price.nil? || boat.price == 0 %>
+					<p class="price">¡A CONSULTAR!</p>
+				<% else %>
+					<p class="price"><%= number_to_currency(boat.price, :precision => 0, :unit => "&euro;") %></p>
+				<% end %>
+				<p class="link"><%= link_to "Mas Informaci&oacute;n", :controller => "viewer", :action => "single", :id => boat.id %></p>
+			</div>
+		<% end %>
+	<% end %>
+</div>
+<h2>Nuevo en el Mercado</h2>
+<div class="boats">
+	<% @boats.each do |boat| %>
+		<% if boat.offer_new == "Nuevo" && boat.for_sale == "Sí" %>
+			<div class="boat">
+				<%= image_tag boat.photos[0].data.url(:cover) %>
+				<p class="model"><%= boat.bmake %> <%= boat.model %></p>
+				<% if boat.price.nil? || boat.price == 0 %>
+					<p class="price">¡A CONSULTAR!</p>
+				<% else %>
+					<p class="price"><%= number_to_currency(boat.price, :precision => 0, :unit => "&euro;") %></p>
+				<% end %>
+				<p class="link"><%= link_to "Mas Informaci&oacute;n", :controller => "viewer", :action => "single", :id => boat.id %></p>
+			</div>
+		<% end %>
+	<% end %>
+</div>

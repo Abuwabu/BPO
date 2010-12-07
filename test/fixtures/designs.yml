@@ -1,0 +1,35 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  make: MyString
+  model: MyString
+  architect: MyString
+  builder: MyString
+  length: 1.5
+  width: 1.5
+  draft: 1.5
+  headroom: 1.5
+  weight: 1
+  cat: MyString
+  keel: MyString
+  masts: 1
+  intwheel: 
+  flybridge: 
+  babystay: false
+
+two:
+  make: MyString
+  model: MyString
+  architect: MyString
+  builder: MyString
+  length: 1.5
+  width: 1.5
+  draft: 1.5
+  headroom: 1.5
+  weight: 1
+  cat: MyString
+  keel: MyString
+  masts: 1
+  intwheel: 
+  flybridge: 
+  babystay: false

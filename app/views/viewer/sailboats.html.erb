@@ -1,0 +1,24 @@
+<h2>Sailboats</h2>
+<table>
+	<tr><th>Foto</th><th>Modelo</th><th>Año</th><th>Eslora (m)</th><th>Precio (&euro;)</th></tr>
+	<% @boats.each do |boat| %>
+		<% if (boat.btype == "Crucero" || boat.btype == "Crucero/Regatta" || boat.btype == "Regatta" || boat.btype == "Motorvelero") && boat.for_sale == "Sí" %>
+		<tr>
+			<td>
+				<div class="thumblink">
+					<%= image_tag boat.photos[0].data.url(:thumb) %>
+					<p><%= link_to "Mas Informaci&oacute;n", :controller => "viewer", :action => "single", :id => boat.id %></p>
+				</div>
+			</td>
+			<td><%= boat.bmake %> <%= boat.model %></td>
+			<td><%= boat.year %></td>
+			<td><%= boat.length %></td>
+			<% if boat.price.nil? || boat.price == 0 %>
+				<td>¡A CONSULTAR!</td>
+			<% else %>
+				<td><%= number_to_currency(boat.price, :precision => 0, :unit => "&euro;") %></td>
+			<% end %>
+		</tr>
+		<% end  %>	
+	<% end %>
+</table>

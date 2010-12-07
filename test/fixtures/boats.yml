@@ -1,0 +1,17 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  model: MyString
+  year: 1
+  motor: MyString
+  length: 1.5
+  price: 1.5
+  location: MyString
+
+two:
+  model: MyString
+  year: 1
+  motor: MyString
+  length: 1.5
+  price: 1.5
+  location: MyString

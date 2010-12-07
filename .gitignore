@@ -1,0 +1,9 @@
+.DS_Store
+db/*.sqlite3
+log/*.log
+tmp/**/*
+config/database.yml
+config/deploy.rb
+*.tmproj
+design/**/*
+public/images/boats

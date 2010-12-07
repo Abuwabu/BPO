@@ -1,0 +1,25 @@
+<h2><%= @pagetitle %></h2>
+
+<table>
+	<tr><th>Foto</th><th>Modelo</th><th>Año</th><th>Eslora (m)</th><th>Precio (&euro;)</th><th>En Venta?</th></tr>
+
+<% @boats.each do |boat| %>
+  <tr>
+		<td><%= image_tag boat.photos[0].data.url(:thumb) %></td>
+		<td><%= boat.bmake %> <%= boat.model %></td>
+		<td><%= boat.year %></td>
+		<td><%= boat.length %>
+		<% if boat.price.nil? || boat.price == 0 %>
+			<td>¡A CONSULTAR!</td>
+		<% else %>
+			<td><%= number_to_currency(boat.price, :precision => 0, :unit => "&euro;") %></td>
+		<% end %>
+		<td><%= boat.for_sale %></td>
+    <td><%= link_to 'Mostrar', boat %></td>
+    <td><%= link_to 'Editar', edit_boat_path(boat) %></td>
+    <td><%= link_to 'Borrar', boat, :confirm => 'Est&aacute;s Seguro?', :method => :delete %></td>
+ </tr>
+<% end %>
+</table>
+
+<%= link_to 'Barco Nuevo', new_boat_path, :id => "newboat" %>

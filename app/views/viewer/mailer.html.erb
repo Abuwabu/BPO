@@ -1,0 +1,69 @@
+<h2>Contacto</h2>
+<form id="contact" action="mailto:abuwabu@gmail.com">
+	<fieldset>
+		<legend>Preguntas y Direcciones</legend>
+		
+		<fieldset id="mapa" class="halves">
+			<legend>Direcci&oacute;n y Mapa</legend>
+			
+			<strong>
+				<p class="adr">
+					<span class="line"><span class="street-address">BPO Nautica</span></span>
+					<span class="line"><span class="street-address">Amarre 2801</span></span>
+					<span class="line"><span class="postal-code">08005 </span><span class="locality">Barcelona</span></span>
+				</p>
+
+				<ul>
+					<li class="num">Tel: 93 224 71 27</li>
+					<li class="num">Fax: 93 224 71 29</li>
+				</ul>
+			</strong>
+			
+			<iframe width="400" height="400" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="http://maps.google.es/maps?f=d&amp;source=s_d&amp;saddr=Moll+de+Mestral&amp;daddr=&amp;geocode=FciJdwIdpJIhAA&amp;hl=es&amp;mra=mr&amp;sll=41.388529,2.200313&amp;sspn=0.004419,0.009645&amp;ie=UTF8&amp;ll=41.387934,2.196386&amp;spn=0.006439,0.008562&amp;z=16&amp;output=embed"></iframe><br /><small><a href="http://maps.google.es/maps?f=d&amp;source=embed&amp;saddr=Moll+de+Mestral&amp;daddr=&amp;geocode=FciJdwIdpJIhAA&amp;hl=es&amp;mra=mr&amp;sll=41.388529,2.200313&amp;sspn=0.004419,0.009645&amp;ie=UTF8&amp;ll=41.387934,2.196386&amp;spn=0.006439,0.008562&amp;z=16" style="color:#0000FF;text-align:left">Ver mapa más grande</a></small>
+		</fieldset>
+		
+		<fieldset id="pongase_en_contacto" class="halves">
+			<legend>Pongase en Contacto</legend>
+			<ul>
+				<li><label for="nombre">Nombre:</label><input type="text" name="nombre" value="" id="nombre"></li>
+				<li><label for="apellidos">Apellidos:</label><input type="text" name="apellidos" value="" id="apellidos"></li>
+				<li><label for="direcci&oacute;n">Direcci&oacute;n:</label><input type="text" name="direcci&oacute;n" value="" id="direcci&oacute;n"></li>
+				<li><label for="poblaci&oacute;n">Poblaci&oacute;n:</label><input type="text" name="poblaci&oacute;n" value="" id="poblaci&oacute;n"></li>
+				<li><label for="tel">Email:</label><input type="text" name="email" value=""></li>
+				<li><label for="tel">Tel:</label><input type="text" name="tel" value="" id="tel"></li>
+				<li><label for="fax">Fax:</label><input type="text" name="fax" value="" id="fax"></li>
+				<li><label for="info">Deseo informaci&oacute;n de la embarcaci&oacute;n:</label><input type="text" name="info" value="" id="info"></li>
+				<li><label for="comentarios">Escriba sus comentarios y preguntas en el espacio siguiente:</label><input type="text" name="comentarios" value="" id="comentarios"></li>
+				<li>
+					<label>Busco un:</label>
+					<span class="radio">
+						<label for="barco_a_motor">Barco a Motor</label><input type="radio" name="busco" value="motora" id="barco_a_motor">
+						<label for="velero">Velero</label><input type="radio" name="busco" value="velero" id="velero">
+						<label for="moto_de_agua">Moto de Agua</label><input type="radio" name="busco" value="moto de agua" id="moto_de_agua">
+						<label for="lancha_neum&aacute;tica">Lancha Neum&aacute;tica</label><input type="radio" name="busco" value="lancha_neum&aacute;tica" id="lancha_neum&aacute;tica">
+					</span>
+				</li>
+				<li>
+					<label for="de_la_marca">De la Marca:</label><input type="text" name="de_la_marca" value="" id="de_la_marca">
+					<label>con motor:</label>
+					<select name="motor" id="">
+						<option value="Fuera borda">Fuera borda</option>
+						<option value="Dentro fuera borda">Dentro fuera borda</option>
+						<option value="Diesel">Diesel</option>
+						<option value="Velero">Velero</option>
+					</select>
+				</li>
+				<li>
+					<label for="eslora">Eslora:</label>
+					min: <input type="text" name="eslora_min" value="" id="eslora_min"> mts. y max: <input type="text" name="eslora_max" value="" id="eslora_max"> mts.
+				</li>
+				<li>
+					<label for="presupuesto">Presupuesto:</label>
+					Entre: <input type="text" name="presupuesto_min" value="" id="presupuesto_min"> y: <input type="text" name="presupuesto_max" value="" id="presupuesto_max">
+				</li>
+				<li><input type="submit" name="submit" value="Enviar" id="submit"></li>
+			</ul>
+		</fieldset>
+		
+	</fieldset>
+</form>
