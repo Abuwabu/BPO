@@ -68,8 +68,8 @@
 	
 		<% if @boat.num_motors? || @boat.eng_make? || @boat.eng_model? || @boat.eng_type? || @boat.eng_cyls? || @boat.eng_fuel? || @boat.eng_hp? || @boat.eng_cruisespd? || @boat.eng_maxspd? || @boat.fuelcap? || @boat.eng_serviced? || @boat.eng_hours? || @boat.eng_notes? %>
 		<table class='data'>
-			<th colspan="2">Motoras</th>
-			<% if @boat.num_motors? %><tr><td>Motoras</td><td><%=h @boat.num_motors %></td></tr><% end %>
+			<th colspan="2">Motores</th>
+			<% if @boat.num_motors? %><tr><td>Motores</td><td><%=h @boat.num_motors %></td></tr><% end %>
 			<% if @boat.eng_make? %><tr><td>Marca</td><td><%=h @boat.eng_make %></td></tr><% end %>
 			<% if @boat.eng_model? %><tr><td>Modelo</td><td><%=h @boat.eng_model %></td></tr><% end %>
 			<% if @boat.eng_type? %><tr><td>Tipo</td><td><%=h @boat.eng_type %></td></tr><% end %>
