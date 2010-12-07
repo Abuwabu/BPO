@@ -12,7 +12,6 @@ class BoatsController < ApplicationController
   end
   
   def index
-    
     @boats = Boat.find(:all, :order => sort_column + " " + sort_direction)
 
     respond_to do |format|
