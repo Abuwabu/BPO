@@ -10,7 +10,7 @@ class BoatsController < ApplicationController
   end
   
   def index
-    @boats = Boat.all
+    @boats = Boat.find(:all, :order => 'length')
 
     respond_to do |format|
       format.html # index.html.erb

@@ -15,7 +15,7 @@ class ViewerController < ApplicationController
     	              #menu li#veleros:hover { top: 0; }
     	              #menu li#veleros a { color: #151E2D; }
     	              h2 { background: #4280C9; }'
-    @boats = Boat.find(:all)
+     @boats = Boat.find(:all, :order => 'length')
   end
 
   def motorboats
@@ -24,7 +24,7 @@ class ViewerController < ApplicationController
     	              #menu li#motores:hover { top: 0; }
     	              #menu li#motores a { color: #151E2D; }
     	              h2 { background: #66C732; }'
-    @boats = Boat.find(:all)
+     @boats = Boat.find(:all, :order => 'length')
   end
   
   def contact
